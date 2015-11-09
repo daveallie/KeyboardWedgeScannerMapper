@@ -13,7 +13,11 @@ namespace KeyboardWedgeScannerMapper
         {
             if (e.KeyChar != (char) Keys.Return) return;
 
-            KWSMapper.SendMessageToInput(txtInput.Text);
+            bool ok = KWSMapper.SendMessageToInput(txtInput.Text);
+            if (ok)
+            {
+                Activate();
+            }
             txtInput.Clear();
             e.Handled = true;
         }
