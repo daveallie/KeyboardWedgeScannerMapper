@@ -45,14 +45,35 @@ namespace KeyboardWedgeScannerMapper
             BarcodeMapList.Where(barcodeMap => barcodeMap.IsEmpty()).ToList().ForEach(barcodeMap => BarcodeMapList.Remove(barcodeMap));
         }
 
-        public static void SendMessageToInput(string output)
+        public static void SendMessageToInput(string barcode)
         {
-            Debug.Print(output);
-            if (PickedWindow != null)
+            BarcodeMap barcodeMap = BarcodeMapList.FirstOrDefault(bMap => bMap.Barcode.Equals(barcode.Trim()));
+            bool error = false;
+            string eMessage = "";
+
+            if (PickedWindow == null)
             {
-                SendMessage(PickedWindow.hWnd, WM_SETTEXT, 0, output + "\n");
-//                SendMessage(PickedWindow.hWnd, WM_KEYDOWN, VK_RETURN, "");
-//                SendMessage(PickedWindow.hWnd, WM_KEYUP, VK_RETURN, "");
+                error = true;
+                eMessage = "No input field has been selected!";
+            }
+
+            if (!error && barcodeMap == null)
+            {
+                error = true;
+                eMessage = "No matching barcode in the map!";
+            }
+
+            if (error)
+            {
+                MessageBox.Show(eMessage, "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            else
+            {
+                Debug.Print("Sending: " + barcodeMap.PartNumber);
+                SendMessage(PickedWindow.hWnd, WM_SETTEXT, 0, barcodeMap.PartNumber + "\n");
+                //                SendMessage(PickedWindow.hWnd, WM_KEYDOWN, VK_RETURN, "");
+                //                SendMessage(PickedWindow.hWnd, WM_KEYUP, VK_RETURN, "");
             }
         }
     }
