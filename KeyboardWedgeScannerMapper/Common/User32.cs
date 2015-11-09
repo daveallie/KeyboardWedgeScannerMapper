@@ -208,8 +208,6 @@ namespace Common
 
 	public class User32
 	{
-		public User32() {}
-
 //		public const UInt32 WM_USER = 0x0400;
 
 //		public const UInt32 WM_KEYDOWN = 0x0100;

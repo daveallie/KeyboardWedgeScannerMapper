@@ -35,7 +35,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.StartTracking = new System.Windows.Forms.ToolStripButton();
             this.StopTracking = new System.Windows.Forms.ToolStripButton();
-            this.mouseTrackerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -45,10 +44,11 @@
             this.dgwWindowInfo = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mouseTrackerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mouseTrackerBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwWindowInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mouseTrackerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -159,9 +159,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmWindowPicker_FormClosing);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mouseTrackerBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwWindowInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mouseTrackerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

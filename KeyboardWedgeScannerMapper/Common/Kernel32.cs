@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using FILETIME = System.Runtime.InteropServices.ComTypes.FILETIME;
 
 namespace Common
 {
@@ -284,7 +285,7 @@ namespace Common
         public static extern IntPtr GetModuleHandle(string lpModuleName);
 
         [Flags]
-        public enum ThreadAccess : int
+        public enum ThreadAccess
         {
             TERMINATE = (0x0001),
             SUSPEND_RESUME = (0x0002),

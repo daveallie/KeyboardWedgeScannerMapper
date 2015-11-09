@@ -20,18 +20,26 @@ namespace KeyboardWedgeScannerMapper
 
         private void btnSelectWindow_Click(object sender, System.EventArgs e)
         {
-            FrmWindowPicker f1 = new FrmWindowPicker();
-            f1.TopMost = true;
-            f1.ShowDialog(this);
-            if (f1.PickedWindow == null) return;
-            KWSMapper.PickedWindow = f1.PickedWindow;
-            lblCurrentWindowTitle.Text = ((long)f1.PickedWindow.hWnd).ToString("D8") + " / " + ((long)f1.PickedWindow.hWnd).ToString("X8");
+            FrmWindowPicker frmWindowPicker = new FrmWindowPicker {TopMost = true};
+            frmWindowPicker.ShowDialog(this);
+            if (frmWindowPicker.PickedWindow == null) return;
+            KWSMapper.PickedWindow = frmWindowPicker.PickedWindow;
+            lblCurrentWindowTitle.Text = ((long)frmWindowPicker.PickedWindow.hWnd).ToString("D8") + " / " + ((long)frmWindowPicker.PickedWindow.hWnd).ToString("X8");
             txtInput.Enabled = true;
         }
 
         private void exitToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmMap frmMap = new FrmMap();
+            frmMap.ShowDialog(this);
+
+            // Write barcode maps to file
+            KWSMapper.SaveBarcodeMaps();
         }
     }
 }

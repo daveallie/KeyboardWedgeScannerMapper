@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 using System.Runtime.InteropServices;
@@ -78,12 +77,6 @@ namespace KeyboardWedgeScannerMapper
         }
 
         /// <summary>
-        /// The list keeps suspended windows
-        /// </summary>
-        private List<IntPtr> _suspendHWnds = new List<IntPtr>();
-
-
-        /// <summary>
         ///  Mouse event hook callback
         /// </summary>
         /// <param name="nCode"></param>
@@ -118,7 +111,7 @@ namespace KeyboardWedgeScannerMapper
                 if (hOwner == Handle)
                 {
                     // Allow buttons on window picker form to receive clicking immediately.
-                    this.Activate();
+                    Activate();
                     Debug.Print("Ignoring Action!");
                 }
                 else
@@ -135,21 +128,6 @@ namespace KeyboardWedgeScannerMapper
                     "Error in private IntPtr Mouse_HookCallback(int nCode, IntPtr wParam, IntPtr lParam): " + e.Message);
             }
             return User32.CallNextHookEx(_mouseHookId, nCode, wParam, lParam);
-        }
-
-        /// <summary>
-        /// Resume all the suspended windows
-        /// </summary>
-        private void ResumeWindows()
-        {
-            foreach (IntPtr hWnd in _suspendHWnds)
-            {
-                uint thrdId = User32.GetWindowThreadProcessId(hWnd, IntPtr.Zero);
-                IntPtr hThrd = Kernel32.OpenThread(Kernel32.ThreadAccess.SUSPEND_RESUME, true, thrdId);
-                while (Kernel32.ResumeThread(hThrd) > 0) ;
-                bool b = Kernel32.CloseHandle(hThrd);
-            }
-            _suspendHWnds.Clear();
         }
 
         private void FrmWindowPicker_FormClosing(object sender, FormClosingEventArgs e)
@@ -170,13 +148,10 @@ namespace KeyboardWedgeScannerMapper
             {
                 // ignored
             }
-
-            ResumeWindows();
         }
 
         private void StartTracking_Click(object sender, EventArgs e)
         {
-            ResumeWindows();
             if (_keyboardHookId != IntPtr.Zero) User32.UnhookWindowsHookEx(_keyboardHookId);
             _keyboardHookId = IntPtr.Zero;
 
@@ -373,8 +348,7 @@ namespace KeyboardWedgeScannerMapper
                         if (lastWin.hWnd != win.hWnd)
                         {
                             drawFrame(win);
-                            Thread thd = new Thread(drawFrame);
-                            thd.Name = "delay";
+                            Thread thd = new Thread(drawFrame) {Name = "delay"};
                             thd.Start(win);
                         }
                         lastWin = null;

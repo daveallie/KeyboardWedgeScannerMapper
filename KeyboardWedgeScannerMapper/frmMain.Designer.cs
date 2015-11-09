@@ -36,15 +36,13 @@ namespace KeyboardWedgeScannerMapper
             this.lblCurrentWindowTitle = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barcodeMappingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,57 +105,17 @@ namespace KeyboardWedgeScannerMapper
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // barcodeMappingToolStripMenuItem
-            // 
-            this.barcodeMappingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem,
-            this.exportToolStripMenuItem,
-            this.importToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.clearToolStripMenuItem});
-            this.barcodeMappingToolStripMenuItem.Name = "barcodeMappingToolStripMenuItem";
-            this.barcodeMappingToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
-            this.barcodeMappingToolStripMenuItem.Text = "Barcode Mapping";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Enabled = false;
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.Enabled = false;
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Enabled = false;
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Enabled = false;
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Enabled = false;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -166,10 +124,34 @@ namespace KeyboardWedgeScannerMapper
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
+            // barcodeMappingToolStripMenuItem
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.barcodeMappingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.clearToolStripMenuItem});
+            this.barcodeMappingToolStripMenuItem.Name = "barcodeMappingToolStripMenuItem";
+            this.barcodeMappingToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.barcodeMappingToolStripMenuItem.Text = "Barcode Mapping";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewToolStripMenuItem.Text = "View / Edit";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Enabled = false;
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
             // 
             // FrmMain
             // 
@@ -204,8 +186,6 @@ namespace KeyboardWedgeScannerMapper
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barcodeMappingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }

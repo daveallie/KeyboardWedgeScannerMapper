@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Common;
@@ -23,7 +21,10 @@ namespace KeyboardWedgeScannerMapper
                 IntPtr hWnd = User32.WindowFromPoint(pt);
                 return User32.GetAncestor(hWnd, 3);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
             return IntPtr.Zero;
         }
 
@@ -42,8 +43,7 @@ namespace KeyboardWedgeScannerMapper
                 if (hWnd == IntPtr.Zero) hWnd = User32.WindowFromPoint(pt);
                 if (hWnd == IntPtr.Zero) return null;
 
-                win = new Window();
-                win.hWnd = hWnd;
+                win = new Window {hWnd = hWnd};
 
                 // Get the rect of window
                 bool b = User32.GetWindowRect(hWnd, out win.rect);
@@ -163,7 +163,6 @@ namespace KeyboardWedgeScannerMapper
                         // Cast the local buffer pointer to the pointer of target data structures
                         TBBUTTON* tb = (TBBUTTON*)localBuffer;
                         TBBUTTONINFO* tbf = (TBBUTTONINFO*)localBuffer;
-                        int idCommand = 0;
 
                         for (int i = 0; i < count; i++)
                         {
@@ -178,7 +177,7 @@ namespace KeyboardWedgeScannerMapper
                                 ipLocalBuffer,
                                 (UInt32)sizeof(TBBUTTON),
                                 ipBytesRead);
-                            idCommand = tb->idCommand;
+                            var idCommand = tb->idCommand;
 
                             // Get the button text
                             n = (int)User32.SendMessage(hWnd, TB.GETBUTTONTEXTW, (IntPtr)idCommand, ipRemoteBuffer);

@@ -1,6 +1,5 @@
 using System;
 using System.Text;
-using System.Windows.Forms;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
@@ -734,25 +733,28 @@ namespace Common
 		{
 			try
 			{
-				return Win32.PathGetArgs(path);
+				return PathGetArgs(path);
 			}
-			catch(System.Exception) {}
-			return string.Empty;
+			catch (Exception)
+			{
+			    // ignored
+			}
+		    return string.Empty;
 		}
 
 		[DllImport("Shlwapi.dll")]
 		public static extern int PathCompactPathEx(
-			System.Text.StringBuilder pszOut, /* Address of the string that has been altered */
-			System.Text.StringBuilder pszSrc, /* Pointer to a null-terminated string of max length (MAX_PATH) that contains the path to be altered */
-			uint cchMax,					  /* Maximum number of chars to be contained in the new string, including the null character. Example: cchMax = 8, then 7 chars will be returned, the last for the null character. */
-			uint dwFlags);					  /* Reserved */
+			StringBuilder pszOut, /* Address of the string that has been altered */
+			StringBuilder pszSrc, /* Pointer to a null-terminated string of max length (MAX_PATH) that contains the path to be altered */
+			uint cchMax,	      /* Maximum number of chars to be contained in the new string, including the null character. Example: cchMax = 8, then 7 chars will be returned, the last for the null character. */
+			uint dwFlags);		  /* Reserved */
 
 		public static string PathCompactPathEx(string source, uint maxChars)
 		{			
 			StringBuilder pszOut = new StringBuilder((int)Win32.MAX_PATH);
 			StringBuilder pszSrc = new StringBuilder(source);
 
-			int result = Win32.PathCompactPathEx(pszOut, pszSrc, maxChars, (uint)0);
+			int result = PathCompactPathEx(pszOut, pszSrc, maxChars, 0);
 			if (result == 1)
 				return pszOut.ToString();
 			else
@@ -794,32 +796,32 @@ namespace Common
 
 		public static short MAKEWORD(byte a, byte b)
 		{
-			return ((short)(((byte)(a & 0xff)) | ((short)((byte)(b & 0xff))) << 8));
+			return (short)((byte)(a & 0xff) | (byte)(b & 0xff) << 8);
 		}
 
 		public static byte LOBYTE(short a)
 		{
-			return ((byte)(a & 0xff));
+			return (byte)(a & 0xff);
 		}
 
 		public static byte HIBYTE(short a)
 		{
-			return ((byte)(a >> 8));
+			return (byte)(a >> 8);
 		}
 
 		public static int MAKELONG(short a, short b)
 		{
-			return ( ((int)(a & 0xffff)) | (((int)(b & 0xffff)) << 16) );
+			return a & 0xffff | ((b & 0xffff) << 16);
 		}
 
 		public static short HIWORD(int a)
 		{
-			return ((short)(a >> 16));
+			return (short)(a >> 16);
 		}
 
 		public static short LOWORD(int a)
 		{
-			return ((short)(a & 0xffff));
+			return (short)(a & 0xffff);
 		}		
 
 		[DllImport("Kernel32")]
