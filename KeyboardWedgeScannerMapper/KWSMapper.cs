@@ -8,6 +8,10 @@ namespace KeyboardWedgeScannerMapper
     static class KWSMapper
     {
         public static Window PickedWindow = null;
+        private const int WM_SETTEXT = 0x000C;
+        private const int WM_KEYDOWN = 0x0100;
+        private const int WM_KEYUP = 0x0101;
+        private const int VK_RETURN = 0x0D;
 
         [STAThread]
         static void Main()
@@ -17,37 +21,18 @@ namespace KeyboardWedgeScannerMapper
             Application.Run(new FrmMain());
         }
 
-        // Get a handle to an application window.
-        [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
-        public static extern IntPtr FindWindow(string lpClassName,
-            string lpWindowName);
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int uMsg, int wParam, string lParam);
 
-        // Activate an application window.
-        [DllImport("USER32.DLL")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        public static void SwitchAndOutput(string output)
+        public static void SendMessageToInput(string output)
         {
             Debug.Print(output);
-
-            // Get a handle to the Calculator application. The window class
-            // and window name were obtained using the Spy++ tool.
-            IntPtr calculatorHandle = FindWindow("CalcFrame", "Calculator");
-
-            // Verify that Calculator is a running process.
-            if (calculatorHandle == IntPtr.Zero)
+            if (PickedWindow != null)
             {
-                MessageBox.Show("Calc is not running.");
-                return;
+                SendMessage(PickedWindow.hWnd, WM_SETTEXT, 0, output + "\n");
+//                SendMessage(PickedWindow.hWnd, WM_KEYDOWN, VK_RETURN, "");
+//                SendMessage(PickedWindow.hWnd, WM_KEYUP, VK_RETURN, "");
             }
-
-            // Make Calculator the foreground application and send it 
-            // a set of calculations.
-            SetForegroundWindow(calculatorHandle);
-            SendKeys.SendWait("111");
-            SendKeys.SendWait("*");
-            SendKeys.SendWait("11");
-            SendKeys.SendWait("=");
         }
     }
 }
