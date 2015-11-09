@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardWedgeScannerMapper", "KeyboardWedgeScannerMapper\KeyboardWedgeScannerMapper.csproj", "{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Release|ARM.ActiveCfg = Release|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Release|Win32.ActiveCfg = Release|Any CPU
+		{FDC1EF4D-F6C4-42AC-A79C-FACB37A1BFAC}.Release|x64.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
