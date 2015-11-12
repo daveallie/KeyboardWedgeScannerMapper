@@ -152,9 +152,8 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.dgwWindowInfo);
             this.Controls.Add(this.toolStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmWindowPicker";
+            this.ShowIcon = false;
             this.Text = "Window Picker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmWindowPicker_FormClosing);
             this.toolStrip1.ResumeLayout(false);

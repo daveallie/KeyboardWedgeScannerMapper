@@ -191,7 +191,8 @@ namespace KeyboardWedgeScannerMapper
             if (win == null) return;
 
             int n = 0;
-            if (win.extendedStyles.Length > 0) n++;
+            if (!string.IsNullOrEmpty(win.styles)) n++;
+            if (!string.IsNullOrEmpty(win.extendedStyles)) n++;
             if (win.hMenu != IntPtr.Zero) n++;
             if (win.itemType != null) n++;
             if (win.owner != IntPtr.Zero) n++;
@@ -203,7 +204,7 @@ namespace KeyboardWedgeScannerMapper
             if (win.itemStyles != null) n += win.itemStyles.Length;
             dgwWindowInfo.Rows.Clear();
             dgwWindowInfo.Refresh();
-            dgwWindowInfo.Rows.Add(5+n);
+            dgwWindowInfo.Rows.Add(4+n);
 
             int i = 0;
             dgwWindowInfo.Rows[i].Cells[0].Value = "HWnd";
@@ -221,10 +222,13 @@ namespace KeyboardWedgeScannerMapper
             dgwWindowInfo.Rows[i].Cells[0].Value = "Size";
             dgwWindowInfo.Rows[i++].Cells[1].Value = string.Format("{0} x {1}", win.rect.Width, win.rect.Height);
 
-            dgwWindowInfo.Rows[i].Cells[0].Value = "Window Style";
-            dgwWindowInfo.Rows[i++].Cells[1].Value = win.styles;
+            if (!string.IsNullOrEmpty(win.styles))
+            {
+                dgwWindowInfo.Rows[i].Cells[0].Value = "Window Style";
+                dgwWindowInfo.Rows[i++].Cells[1].Value = win.styles;
+            }
 
-            if (win.extendedStyles.Length > 0)
+            if (!string.IsNullOrEmpty(win.extendedStyles))
             {
                 dgwWindowInfo.Rows[i].Cells[0].Value = "Extended Window Style";
                 dgwWindowInfo.Rows[i++].Cells[1].Value = win.extendedStyles;

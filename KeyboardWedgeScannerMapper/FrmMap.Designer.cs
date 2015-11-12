@@ -48,7 +48,8 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.dgvMap);
             this.Name = "FrmMap";
-            this.Text = "FrmMap";
+            this.ShowIcon = false;
+            this.Text = "Barcode Map";
             ((System.ComponentModel.ISupportInitialize)(this.dgvMap)).EndInit();
             this.ResumeLayout(false);
 
